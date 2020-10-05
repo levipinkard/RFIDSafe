@@ -33,4 +33,4 @@ After wiring everything, upload to your Arduino, then look in the serial monitor
 
 Full write-up available here: https://forum.dangerousthings.com/t/all-compromises-safe-conversion-project-for-less-than-9/
 
-More info (including wiring info and pictures) coming soon.
+More info (including pictures) coming soon.
