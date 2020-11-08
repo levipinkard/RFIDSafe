@@ -86,18 +86,26 @@ void loop(void) {
     boolean correctLeft = true;
     boolean correctSpare = true;
     boolean correctVivo = true;
-    //UID values for valid cards (set to random by default)
     uint8_t rightHand[] = {0x2, 0xAF ,0xF3 ,0x12 ,0xB2 ,0x80 ,0x12};
     uint8_t leftHand[] = {0x2, 0xAF ,0xF3 ,0x12 ,0xB2 ,0x80 ,0x12};
     uint8_t vivoHand[] = {0x2, 0xAF ,0xF3 ,0x12 ,0xB2 ,0x80 ,0x12};
     uint8_t spareCard[] = {0x4,0xCA ,0xF1 ,0x45};
     for (uint8_t i=0; i < uidLength; i++) 
     { if (uidLength >= 7) {
+        correctSpare = false;
         if (rightHand[i] != uid[i]) correctRight = false;
         if (leftHand[i] != uid[i]) correctLeft = false;
         if (vivoHand[i] != uid[i]) correctVivo = false;
       } else if (uidLength >= 4) { 
+        correctRight = false;
+        correctLeft = false;
+        correctVivo = false;
         if (spareCard[i] != uid[i]) correctSpare = false;
+      } else {
+        correctRight = false;
+        correctLeft = false;
+        correctVivo = false;
+        correctSpare = false;
       }
       Serial.print(" 0x");Serial.print(uid[i], HEX); 
     }
